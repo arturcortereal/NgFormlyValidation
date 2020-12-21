@@ -1,4 +1,7 @@
+import { Contact } from './models/contact.model';
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'NgFormlyValidation';
+  contactForm: FormGroup;
+  contactModel: Contact;
+  contactFields: Array<FormlyFieldConfig>;
+
+  constructor() {
+    this.contactForm = new FormGroup({});
+    this.contactModel = new Contact();
+    this.contactFields = this.contactModel.formFields();
+  }
+
+  submitForm(contact: Contact) {
+    console.log(contact);
+  }
 }

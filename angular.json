@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "NgFormlyValidation"
+  "defaultProject": "NgFormlyValidation",
+  "cli": {
+    "analytics": false
+  }
 }

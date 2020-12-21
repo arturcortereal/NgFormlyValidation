@@ -1,0 +1,14 @@
+.code {
+  background-color: darkorchid;
+  color: white;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+button {
+  margin-top: 5px;
+}
+
+pre {
+  font-size: 20px;
+}
