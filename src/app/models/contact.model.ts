@@ -1,9 +1,17 @@
+import { FormControl } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export class Contact {
   name: string | undefined;
   phoneNumber: string | undefined;
   email: string | undefined;
+  ip: string | undefined;
+
+  IpValidator(control: FormControl) {
+    return !control.value || /(\d{1,3}\.){3}\d{1,3}/.test(control.value)
+      ? null
+      : { ip: true };
+  }
 
   formFields() {
     return <FormlyFieldConfig[]>[
@@ -18,9 +26,9 @@ export class Contact {
         },
         validation: {
           messages: {
-            required: 'You need to provide a name!'
-          }
-        }
+            required: 'You need to provide a name!',
+          },
+        },
       },
       {
         key: 'phoneNumber',
@@ -33,9 +41,9 @@ export class Contact {
         },
         validation: {
           messages: {
-            required: 'You need to provide a phone number!'
-          }
-        }
+            required: 'You need to provide a phone number!',
+          },
+        },
       },
       {
         key: 'email',
@@ -48,9 +56,23 @@ export class Contact {
         },
         validation: {
           messages: {
-            required: 'You need to provide an email!'
-          }
-        }
+            required: 'You need to provide an email!',
+          },
+        },
+      },
+      {
+        key: 'ip',
+        type: 'input',
+        templateOptions: {
+          label: 'IP Address',
+          required: true,
+        },
+        validators: {
+          ip: {
+            expression: (c: any) => /(\d{1,3}\.){3}\d{1,3}/.test(c.value),
+            message: "You need to provide a valid IP!",
+          },
+        },
       },
     ];
   }
